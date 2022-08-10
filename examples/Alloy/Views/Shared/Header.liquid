@@ -15,11 +15,11 @@
 						{% assign navigationPages = ContentLoader.GetChildren(CmsContext.StartPage) | visible_in_menu | for_visitor %}
 						{% for page in navigationPages %}
 						{% assign activeClass = "" %}
-						{% if page.ID == Model.CurrentPage.ContentLink.ID %}
+						{% if page.ContentLink.ID == Model.CurrentPage.ContentLink.ID %}
 						{% assign activeClass = "active" %}
 						{% endif %}
 						<li class="nav-item">
-								<a class="nav-link " href="{{ page | url }}">{{ page.Name }}</a>
+								<a class="nav-link {{ activeClass }}" href="{{ page | url }}">{{ page.Name }}</a>
 							</li>
 						{% endfor %}
 					</ul>

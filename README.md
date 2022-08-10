@@ -1,4 +1,4 @@
-<p align="center"><img width="150px" src="https://github.com/episerver/liquid-templating-cms/raw/main/opti-liquid-logo.png"></p>
+<p align="center"><img width="180px" src="https://github.com/episerver/liquid-templating-cms/raw/main/opti-liquid-logo.png"></p>
 
 ## Optimizely Liquid Templates
 
@@ -34,7 +34,7 @@ services.AddMvc().AddFluid().AddCmsFluid();
 }
 ```
 
-A Liquid implementation of Alloy is provided in this repository demonstrating the above configuration.
+A Liquid implementation of [Alloy](https://github.com/episerver/liquid-templating-cms/tree/main/examples/Alloy) is provided in this repository demonstrating the above configuration and example .liquid views.
 
 ---
 ## Prerequisites
@@ -208,7 +208,7 @@ The following filters act on Arrays of IContent, remving elements according to t
     - published - filters content to those are published 
     - has_template - filters content to those that have a template / renderer
     - of_type - filters content based on the content type, which is looked up by Content Type Display Name
-    - visible_in_menu - filters page data content that has Visible in Menu flag set to true 
+    - visible_in_menu - filters page data content to those that have the Visible in Menu flag set to true 
 
 #### Example usage
 ```html
@@ -226,7 +226,7 @@ The is_empty filter acts on ContentReference objects and returns true if the Con
 ```
 
 #### Content Type Filters
-The is_true filter acts on IContent objects and returns true if the IContent matches the specified type.
+The is_type filter acts on IContent objects and returns true if the IContent matches the specified type.
 
 #### Example usage
 ```html
