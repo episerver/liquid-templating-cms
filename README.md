@@ -1,4 +1,4 @@
-<p align="center"><img width="150px" src="https://github.com/made-to-engage/EPiServer.Labs.Liquid/raw/develop/opti-liquid-logo.png"></p>
+<p align="center"><img width="150px" src="https://github.com/episerver/liquid-templating-cms/raw/main/opti-liquid-logo.png"></p>
 
 ## Optimizely Liquid Templates
 
