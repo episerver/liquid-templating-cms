@@ -1,0 +1,8 @@
+{% assign buttonText = CmsHelper.Translate("/blocks/buttonblockcontrol/buttondefaulttext") %}
+{% if Model.ButtonText != "" %}
+    {% assign buttonText = Model.ButtonText %}
+{% endif %}
+
+<a class="btn btn-primary" title="{{ Model.ButtonText }}" href="{{ Model.ButtonLink | url }}" {{ CmsHelpers.EditAttributes("ButtonText")}}>
+    {{ buttonText }}
+</a>

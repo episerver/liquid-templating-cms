@@ -1,0 +1,27 @@
+{% layout 'Shared/Layouts/_TwoPlusOne' %}
+
+<div class="content">
+    <h1 {{ CmsHelper.EditAttributes("PageName") }}>{{ Model.CurrentPage.PageName }}</h1>
+	
+    <p class="lead" {{ CmsHelper.EditAttributes("MetaDescription") }}>{{ Model.CurrentPage.MetaDescription}}</p>
+    <div class="clearfix">
+        {{ Property.For(Model.CurrentPage.MainBody, "MainBody") }}
+    </div>
+</div>
+
+{{ Property.For(Model=Model.CurrentPage.MainContentArea, PropertyName="MainContentArea", CssClass="row") }}
+
+
+{% section RelatedContent %}
+
+    <div {{ CmsHelper.EditAttributes("PageImage") }}>
+        <img src="{{ Model.CurrentPage.PageImage | url }}" />
+    </div>
+
+    <div class="block colorBox {{ Model.CurrentPage.ThemeCssClassNames | join: " " }}">
+        <h2 {{ CmsHelper.EditAttributes("PageName") }}>{{ Model.CurrentPage.PageName }}</h2>
+		{{ Property.For(Model.CurrentPage.UniqueSellingPoints, "UniqueSellingPoints") }}
+	</div>
+    {{ Property.For(Model=Model.CurrentPage.RelatedContentArea, PropertyName="RelatedContentArea", ViewData="Aside") }}
+
+{% endsection %}

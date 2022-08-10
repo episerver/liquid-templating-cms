@@ -1,0 +1,13 @@
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb d-none d-lg-flex">
+		{% assign ancestors = ContentLoader.GetAncestors(Model.ContentLink, true) | for_visitor %}
+		{% for parent in ancestors %}
+		<li class="breadcrumb-item"><a href="{{ContentLoader.Get(parent.ContentLink) | url}}">{{ ContentLoader.Get(parent.ContentLink).Name  }}</a></li>
+		{% endfor %}
+		<li class="breadcrumb-item active" aria-current="page">
+			{{ Model.PageName }}
+		</li>
+     </ol>
+</nav>
+

@@ -1,0 +1,26 @@
+<ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item">
+		<li class="nav-item">
+			{% assign children = ContentLoader.GetChildren(Model.Section.ContentLink) | for_visitor %}
+			{% for child in children %}
+			{% assign selected = child.ContentLink.ID == Model.CurrentPage.ContentLink.ID %}
+			{% assign selectedCss = "" %}
+			{% if selected %}
+			{% assign selectedCss = "active" %}
+			{% endif %}
+			<a href="{{ child | url }}" class="nav-link {{ selectedCss }}">
+				{{ child.PageName }}
+			</a>
+			{% if child.ContentLink.ID == Model.CurrentPage.ContentLink.ID %}
+			   <ul class="nav nav-pills flex-column">
+				   {% assign children1 = ContentLoader.GetChildren(child.ContentLink) | for_visitor %}
+				   {% for child1 in children1 %}
+				   <li class="nav-item">
+				<a href="{{ContentLoader.Get(child1.ContentLink) | url}}" class="nav-link">{{ ContentLoader.Get(child1.ContentLink).Name  }}</a>
+			</li>
+			{% endfor %}
+			</ul>
+                {% endif %}
+             {% endfor %}
+		</li>
+</ul>

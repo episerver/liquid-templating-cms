@@ -1,0 +1,11 @@
+{% layout 'Shared/Layouts/_LeftNavigation' %}
+
+<div class="content">
+    <h1 {{ CmsHelper.EditAttributes("PageName") }}>{{ Model.CurrentPage.PageName }}</h1>
+    <p class="lead" {{ CmsHelper.EditAttributes("MetaDescription") }}>{{ Model.CurrentPage.MetaDescription }}</p>
+    <div class="clearfix">
+        {{ Property.For(Model.CurrentPage.MainBody, "MainBody") }}
+    </div>
+</div>
+
+{{ Property.For(Model=Model.CurrentPage.MainContentArea, PropertyName="MainContentArea", CssClass="row") }}

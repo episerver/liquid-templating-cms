@@ -1,0 +1,87 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Using Include="EPiServer" />
+    <Using Include="EPiServer.Core" />
+    <Using Include="EPiServer.DataAbstraction" />
+    <Using Include="EPiServer.DataAnnotations" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="EPiServer.CMS" Version="12.6.0" />
+    <PackageReference Include="Wangkanai.Detection" Version="5.2.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Translations\**\*" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Remove="Views\ArticlePage\Index.liquid" />
+    <None Remove="Views\LandingPage\Index.liquid" />
+    <None Remove="Views\NewsPage\Index.liquid" />
+    <None Remove="Views\Preview\Index.liquid" />
+    <None Remove="Views\ProductPage\index.liquid" />
+    <None Remove="Views\SearchPage\Index.liquid" />
+    <None Remove="Views\Shared\Blocks\ButtonBlock.liquid" />
+    <None Remove="Views\Shared\Blocks\EditorialBlock.liquid" />
+    <None Remove="Views\Shared\Blocks\JumbotronBlock.liquid" />
+    <None Remove="Views\Shared\Blocks\NoRenderer.liquid" />
+    <None Remove="Views\Shared\Blocks\SiteLogotypeBlock.liquid" />
+    <None Remove="Views\Shared\Blocks\TeaserBlock.liquid" />
+    <None Remove="Views\Shared\Blocks\TeaserBlockWide.liquid" />
+    <None Remove="Views\Shared\Breadcrumbs.liquid" />
+    <None Remove="Views\Shared\Components\ContactBlock\Default.liquid" />
+    <None Remove="Views\Shared\Components\ImageFile\Default.liquid" />
+    <None Remove="Views\Shared\Components\PageListBlock\Default.liquid" />
+    <None Remove="Views\Shared\Components\VideoFile\Default.liquid" />
+    <None Remove="Views\Shared\DisplayTemplates\DateTime.liquid" />
+    <None Remove="Views\Shared\Layouts\_LeftNavigation.liquid" />
+    <None Remove="Views\Shared\Layouts\_TwoPlusOne.liquid" />
+    <None Remove="Views\Shared\PagePartials\ContactPage.liquid" />
+    <None Remove="Views\Shared\PagePartials\Page.liquid" />
+    <None Remove="Views\Shared\PagePartials\PageWide.liquid" />
+    <None Remove="Views\Shared\SubNavigation.liquid" />
+    <None Remove="Views\Shared\TemplateHint.liquid" />
+    <None Remove="Views\StandardPage\Index.liquid" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Include="Views\ArticlePage\Index.liquid" />
+    <Content Include="Views\LandingPage\Index.liquid" />
+    <Content Include="Views\NewsPage\Index.liquid" />
+    <Content Include="Views\Preview\Index.liquid" />
+    <Content Include="Views\ProductPage\Index.liquid" />
+    <Content Include="Views\SearchPage\Index.liquid" />
+    <Content Include="Views\Shared\Blocks\ButtonBlock.liquid" />
+    <Content Include="Views\Shared\Blocks\EditorialBlock.liquid" />
+    <Content Include="Views\Shared\Blocks\JumbotronBlock.liquid" />
+    <Content Include="Views\Shared\Blocks\NoRenderer.liquid" />
+    <Content Include="Views\Shared\Blocks\SiteLogotypeBlock.liquid" />
+    <Content Include="Views\Shared\Blocks\TeaserBlock.liquid" />
+    <Content Include="Views\Shared\Blocks\TeaserBlockWide.liquid" />
+    <Content Include="Views\Shared\Breadcrumbs.liquid" />
+    <Content Include="Views\Shared\Components\ContactBlock\Default.liquid" />
+    <Content Include="Views\Shared\Components\ImageFile\Default.liquid" />
+    <Content Include="Views\Shared\Components\PageListBlock\Default.liquid" />
+    <Content Include="Views\Shared\Components\VideoFile\Default.liquid" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTime.liquid" />
+    <Content Include="Views\Shared\Layouts\_LeftNavigation.liquid" />
+    <Content Include="Views\Shared\Layouts\_TwoPlusOne.liquid" />
+    <Content Include="Views\Shared\PagePartials\ContactPage.liquid" />
+    <Content Include="Views\Shared\PagePartials\Page.liquid" />
+    <Content Include="Views\Shared\PagePartials\PageWide.liquid" />
+    <Content Include="Views\Shared\SubNavigation.liquid" />
+    <Content Include="Views\Shared\TemplateHint.liquid" />
+    <Content Include="Views\StandardPage\Index.liquid" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Optimizely.CMS.Labs.LiquidTemplating\Optimizely.CMS.Labs.LiquidTemplating.csproj" />
+  </ItemGroup>
+</Project>

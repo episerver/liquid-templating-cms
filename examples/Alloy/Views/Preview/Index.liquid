@@ -1,0 +1,21 @@
+{% layout 'Shared/Layouts/_Root' %}
+
+{% for area in Model.Areas %}
+    {% if area.Supported %}
+         {% assign hint = CmsHelper.Translate("/preview/heading") | replace: "{0}", Model.PreviewContent.Name | replace: "{1}", CmsHelper.Translate(area.AreaName)  %}
+         {% include "/Shared/TemplateHint", Model : hint %}
+      
+        <div class="row preview">
+           {{ Property.For(Model=area.ContentArea, PropertyName="", Tag=area.AreaTag) }}
+        </div>
+    
+    {% else %} 
+        {% assign hint = CmsHelper.Translate("/preview/norenderer") | replace: "{0}", Model.PreviewContent.Name | replace: "{1}", CmsHelper.Translate(area.AreaName)  %}
+         {% include "/Shared/TemplateHint", Model : hint %}       
+    {% endif %}
+{% endfor %}
+
+{% if Model.Areas.length < 1 %}
+    {% assign hint = CmsHelper.Translate("/preview/norendereratall") | replace: "{0}", Model.PreviewContent.Name  %}
+    {% include "/Shared/TemplateHint", Model : hint %}  
+{% endif %}

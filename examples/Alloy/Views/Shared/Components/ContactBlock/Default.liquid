@@ -1,0 +1,12 @@
+<div class="contact">
+    {{ Property.For(Model.Image, "Image") }}
+    
+    <h3 {{ CmsHelper.EditAttributes("Heading") }}>{{ Model.Heading }}</h3>
+    {{ Property.For(Model.ContactPage, "ContactPage") }}
+    
+    {% if Model.ShowLink %}
+        <a href="{{ Model.LinkUrl | url }}" title="{{ Model.LinkText }}" class="btn-blue" {{ CmsHelper.EditAttributes("LinkText")}}>
+            {{ Model.LinkText }}
+        </a>
+    {% endif %}
+</div>

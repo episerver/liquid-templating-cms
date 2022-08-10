@@ -1,0 +1,25 @@
+{% assign displayLink = true %}
+{% assign hasNoLink = Model.Link | is_empty %}
+{% if hasNoLink == true %}
+    {% assign displayLink = false %}
+{% endif %}
+{% if CmsContext.IsInEditMode %}
+    {% assign displayLink = false %}
+{% endif %}
+<div>
+
+    {% if displayLink %}
+        <a href="{{ Model.Link | url }}" title="{{Model.Heading}}">
+    {% endif %}
+        
+    <div class="img-wrapper mb-3" {{ CmsHelpers.EditAttributes("Image") }}>
+            <img src="{{ Model.Image |url }}" />
+        </div>
+
+        <h2 {{ CmsHelpers.EditAttributes("Heading") }}>{{ Model.Heading }}</h2>
+        <p {{ CmsHelpers.EditAttributes("Text") }}>{{ Model.Text }}</p>
+    
+    {% if displayLink %}
+        </a> 
+    {% endif %}
+</div>

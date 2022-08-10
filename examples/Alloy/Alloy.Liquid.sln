@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32126.317
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alloy.Liquid", "Alloy.Liquid.csproj", "{9CB758AA-9D12-4DB8-83DE-F7EEE00FC605}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Optimizely.CMS.Labs.LiquidTemplating", "..\..\src\Optimizely.CMS.Labs.LiquidTemplating\Optimizely.CMS.Labs.LiquidTemplating.csproj", "{A41C0391-473D-470E-AACB-08E8A51E18B9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9CB758AA-9D12-4DB8-83DE-F7EEE00FC605}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CB758AA-9D12-4DB8-83DE-F7EEE00FC605}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CB758AA-9D12-4DB8-83DE-F7EEE00FC605}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CB758AA-9D12-4DB8-83DE-F7EEE00FC605}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A41C0391-473D-470E-AACB-08E8A51E18B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A41C0391-473D-470E-AACB-08E8A51E18B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A41C0391-473D-470E-AACB-08E8A51E18B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A41C0391-473D-470E-AACB-08E8A51E18B9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {01916029-14AF-4BEE-8725-6633BF5A5CBB}
+	EndGlobalSection
+EndGlobal

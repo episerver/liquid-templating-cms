@@ -1,0 +1,61 @@
+{% layout 'Shared/Layouts/_TwoPlusOne' %}
+{% assign method = "GET" %}
+{% if CmsContext.IsInEditMode %}
+    {% assign method = "POST" %}
+{% endif %}
+
+{% assign disabled = "" %}
+{% if Model.SearchServiceDisabled %}
+    {% assign disabled = "disabled" %}
+{% endif %}
+
+
+<div class="row">
+    <div class="span8 search-form">
+        <form action="{{ Model.Layout.SearchActionUrl}}" method="{{ method }}">
+                <input type="text" tabindex="1" name="q" value="{{ Model.SearchedQuery }}" />
+                <input type="submit" tabindex="2" class="btn" value="{{ CmsHelper.Translate("/searchpagetemplate/searchbutton") }}" disabled="{{ disabled }}" />
+        </form>
+    </div>
+</div>
+
+{% if Model.Hits.IsNil() %}
+
+{% else %}
+ <div class="row">
+        <div class="span8 grayHead">
+            <h2>{{ CmsHelper.Translate("/searchpagetemplate/result") }}</h2>
+            <p>
+                {{ CmsHelper.Translate("/searchpagetemplate/searchfor") }}<i>'{{ Model.SearchedQuery }}'</i>
+                {{ CmsHelper.Translate("/searchpagetemplate/resultedin") }}
+                {% if Model.NumberOfHits > 0 %}
+                    {{ Model.NumberOfHits }}
+                {% else %}
+                    {{ CmsHelper.Translate("/searchpagetemplate/zero") }}
+                {% endif %}
+                {{ CmsHelper.Translate("/searchpagetemplate/hits") }}
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span8 SearchResults">
+            {% for hit in Model.Hits %}
+                <div class="listResult">
+                    <h3><a href="{{ hit.Url }}">{{ hit.Title }}</a></h3>
+                    <p>{{ hit.Excerpt }}</p>
+                    <hr />
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+
+
+{% if Model.SearchServiceDisabled %}
+    {% if CmsContext.IsInEditMode %}
+        {% assign hint = CmsHelper.Translate("/searchpagetemplate/disabled") %}
+        {% include "/Shared/TemplateHint", Model : hint %}  
+    {% endif %}
+{% endif %}

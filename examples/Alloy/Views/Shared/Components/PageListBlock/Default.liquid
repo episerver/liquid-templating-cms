@@ -1,0 +1,54 @@
+{% assign isAside = ViewContext.ViewData["Aside"] %}
+
+{{ CmsHelpers.FullRefreshPropertiesMetaData("IncludePublishDate,IncludeIntroduction,Count,SortOrder,Root,PageTypeFilter,CategoryFilter,Recursive") }}
+
+<h2 {{ CmsHelper.EditAttributes("Heading") }}>{{ Model.Heading }}</h2>
+
+{% for page in Model.Pages %}
+    
+    {% if isAside %}
+	    <div class="listResult {{ Model.CurrentPage.ThemeCssClassNames | join: " " }}">
+            <h3><a href="{{ page | url }}">{{ page.Name }}</a></h3>
+
+            {% if Model.ShowPublishDate %}
+                {% if page.StartPublish.HasValue %}
+                   <p class="small date">{% include "/Shared/DisplayTemplates/DateTime", Model: page.StartPublish %}</p>
+                {% endif %}
+            {% endif %}
+
+            {% if Model.ShowIntroduction %}
+                <p>{{ page.TeaserText }}</p>
+            {% endif %}
+        </div>
+    {% else %}
+        <div class="archive-item {{ Model.CurrentPage.ThemeCssClassNames | join: " " }}">
+            <a href="{{ page | url }}">
+                <div class="row">
+                    <div class="col-4">
+                        {% assign isImageEmpty = page.PageImage | is_empty %}
+                        {% if isImageEmpty %}
+                            <div class="placeholder"></div>
+                        {% else %}
+                            <img src="{{ page.PageImage | url }}" alt="{{ page.Name }}" />
+                            
+                        {% endif %}
+                    </div>
+                    <div class="col-8 col-xl-6">
+                        <h3>{{ page.Name }}</h3>
+                        {% if Model.ShowPublishDate %}
+                            {% if page.StartPublish.HasValue %}
+                               <p class="small date">{% include "/Shared/DisplayTemplates/DateTime", Model: page.StartPublish %}</p>
+                            {% endif %}
+                        {% endif %}
+                         {% if Model.ShowIntroduction %}
+                            <p>{{ page.TeaserText }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </a>
+        </div>
+    {% endif %}
+
+{% endfor %}
+
+

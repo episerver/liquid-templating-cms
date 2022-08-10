@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net5.0;net6.0</TargetFrameworks>
+    <Description>Enable Liquid as a scripting / templating language within CMS 12.</Description>
+    <Copyright>(c) Optimizely</Copyright>
+    <Authors>Optimizely</Authors>
+    <Version>0.5.0</Version>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/episerver/liquid-templating</RepositoryUrl>
+    <PackageTags>Optimizely;Episerver;Fluid;Liquid</PackageTags>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <PackageIcon>opti-liquid-logo.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/episerver/liquid-templating</PackageProjectUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0|AnyCPU'">
+    <WarningLevel>5</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0|AnyCPU'">
+    <WarningLevel>5</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net5.0|AnyCPU'">
+    <WarningLevel>5</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net5.0|AnyCPU'">
+    <WarningLevel>5</WarningLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ViewEngine\EpiserverFluidRendering.cs" />
+    <Compile Remove="ViewEngine\EpiserverFluidView.cs" />
+    <Compile Remove="ViewEngine\EpiserverFluidViewEngine.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\opti-liquid-logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EPiServer.CMS.AspNetCore.HtmlHelpers" Version="12.1.0" />
+    <PackageReference Include="EPiServer.CMS.AspNetCore.Templating" Version="12.1.0" />
+    <PackageReference Include="EPiServer.CMS.Core" Version="12.1.0" />
+    <PackageReference Include="EPiServer.CMS.UI.Core" Version="12.1.0" />
+    <PackageReference Include="Fluid.Core" Version="2.2.15" />
+    <PackageReference Include="Fluid.MvcViewEngine" Version="2.2.15" />
+    <PackageReference Include="Fluid.ViewEngine" Version="2.2.15" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+</Project>

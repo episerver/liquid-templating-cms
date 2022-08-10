@@ -1,0 +1,8 @@
+<div style="background-image:url('{{ Model.Image | url }}')">
+    <div class="jumbotron-dimmer"></div>
+    <div class="jumbotron-inner">
+        <h1 class="display-5 mb-4" {{ CmsHelper.EditAttributes("Heading") }}>{{ Model.Heading }}</h1>
+        <p class="lead mb-5" {{ CmsHelper.EditAttributes("SubHeading") }}>{{ Model.SubHeading }}</p>
+        <a class="btn btn-primary btn-lg" href="{{ Model.ButtonLink | url }}" id="jumboLink" {{ CmsHelper.EditAttributes("ButtonText") }}>{{ Model.ButtonText }}</a>
+    </div>
+</div>

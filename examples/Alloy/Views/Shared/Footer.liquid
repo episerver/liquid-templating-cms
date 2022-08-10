@@ -1,0 +1,37 @@
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-3">
+				<h3>{{ CmsHelper.Translate("/footer/products") }}</h3>
+				{{ Property.For(Model.Layout.ProductPages, "ProductPageLinks") }}
+			</div>
+			<div class="col-3">
+				<h3>{{ CmsHelper.Translate("/footer/company") }}</h3>
+				{{ Property.For(Model.Layout.CompanyInformationPages, "CompanyInformationPageLinks") }}
+			</div>
+			<div class="col-3">
+				<h3>{{ CmsHelper.Translate("/footer/news") }}</h3>
+				{{ Property.For(Model.Layout.NewsPages, "NewsPageLinks") }}
+			</div>
+			<div class="col-3">
+				<h3>{{ CmsHelper.Translate("/footer/customerzone") }}</h3>
+				{{ Property.For(Model.Layout.CustomerZonePages, "CustomerZonePageLinks") }}
+				<ul>
+					<li>
+						{% if Model.Layout.LoggedIn %}
+						<a href="Logout">{{ CmsHelper.TranslateWithFallback("/footer/logout","Logout") }}</a>
+						{% else %}
+						{% if Model.Layout.IsInReadonlyMode %}
+						{% else %}
+						<a href="{{ Model.Layout.LoginUrl }}" title="{{ CmsHelper.Translate("/footer/login") }}">{{ CmsHelper.Translate("/footer/login") }}</a>
+						{% endif%}
+						{%endif %}
+
+					</li>
+				</ul>
+
+			</div>
+		</div>
+	</div>
+</footer>
+

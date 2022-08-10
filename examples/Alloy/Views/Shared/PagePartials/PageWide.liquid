@@ -1,0 +1,23 @@
+{% assign displayLink = true %}
+{% assign hasLink = Model.HasTemplate | is_empty %}
+{% if hasLink == false %}
+    {% assign displayLink = false %}
+{% endif %}
+
+<div>
+    <div class="row align-items-center">
+        <div class="col-sm-12 col-lg-6">
+            <img class="pb-3 pb-lg-0" src="{{ Model.PageImage | url }}" />
+        </div>
+        <div class="col-sm-12 col-lg-6">
+            {% if displayLink %}
+                <a href="{{ Model.ContentLink | url }}" title="{{Model.Name}}">
+            {% endif %}
+                <h2>{{ Model.PageName }}</h2>
+                <p>{{ Model.TeaserText }}</p>
+            {% if displayLink %}
+                </a> 
+            {% endif %}
+        </div>
+    </div>
+</div>
