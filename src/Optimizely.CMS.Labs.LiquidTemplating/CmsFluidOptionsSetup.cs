@@ -9,7 +9,8 @@ namespace Optimizely.CMS.Labs.LiquidTemplating
     {
         public CmsFluidOptionsSetup() : base(options =>
          {
-             
+             options.EnableTemplateEditingUserInterface = false;
+             options.EnableProductionMetaDataEndpoint = false;
          })
         { 
         }

@@ -12,13 +12,16 @@ using Optimizely.CMS.Labs.LiquidTemplating.Values;
 using EPiServer.SpecializedProperties;
 using Microsoft.Extensions.Options;
 using Fluid.ViewEngine;
+using Microsoft.Extensions.FileProviders;
+using Optimizely.CMS.Labs.LiquidTemplating.FileProviders;
 
 namespace Optimizely.CMS.Labs.LiquidTemplating.ViewEngine
 {
     public static class CmsMvcBuilderExtensions
     {
-        public static IMvcBuilder AddCmsFluid(this IMvcBuilder builder, Action<CmsFluidOptions> setupAction = null)
+        public static IMvcBuilder AddCmsFluid(this IMvcBuilder builder, IWebHostEnvironment environment, Action<CmsFluidOptions> setupAction = null)
         {
+            
             if (builder == null)
             {
                 throw new ArgumentException(nameof(builder));
@@ -40,10 +43,18 @@ namespace Optimizely.CMS.Labs.LiquidTemplating.ViewEngine
             var parser = registerCmsFluidTags ? new CmsFluidViewParser(new FluidParserOptions { AllowFunctions = true })
                                     : new FluidViewParser(new FluidParserOptions { AllowFunctions = true });
 
+            var mappedFileProvider = new FileProviderMapper(environment.ContentRootFileProvider, "Views");
+            var contentRepoFileProvider = new ContentRepositoryFileProvider();
+
+            var compositeFileProviders = new CompositeFileProvider(contentRepoFileProvider, mappedFileProvider);
+            //var compositeFileProviders = new DebugFileProvider(mappedFileProvider);
+
             //Required configuration for Fluid MVC
             builder.Services.Configure<FluidMvcViewOptions>(options =>
             {
                 options.RenderingViewAsync = FluidRenderingViewAsync.AddItemsToFluidContext;
+                options.ViewsFileProvider = compositeFileProviders;
+                options.PartialsFileProvider = compositeFileProviders;
                 options.Parser = parser;
                 options.TemplateOptions.MemberAccessStrategy = UnsafeMemberAccessStrategy.Instance;
                 options.TemplateOptions.Filters

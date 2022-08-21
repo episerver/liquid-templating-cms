@@ -34,8 +34,7 @@ public class Startup
             .AddAdminUserRegistration()
             .AddEmbeddedLocalization<Startup>();
 
-        services.AddMvc().AddFluid().AddCmsFluid(options => options.EnableProductionMetaDataEndpoint = true);
-
+        services.AddMvc().AddFluid().AddCmsFluid(_webHostingEnvironment);
 
         // Required by Wangkanai.Detection
         services.AddDetection();
