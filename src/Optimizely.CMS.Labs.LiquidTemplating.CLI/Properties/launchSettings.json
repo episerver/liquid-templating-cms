@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "liquid-templating-cli": {
+      "commandName": "Project"
+    }
+  }
+}
