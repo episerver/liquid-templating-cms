@@ -91,7 +91,7 @@ namespace Optimizely.CMS.Labs.LiquidTemplating.Values
         {
             using (var w = new StringWriter())
             {
-                w.Write(ClientResources.RenderRequiredResources(a.At(0).ToStringValue()));
+                ClientResources.RenderAllRequiredResources(a.At(0).ToStringValue()).WriteTo(w, HtmlEncoder.Default);
                 return new StringValue(w.ToString(), false);
             }
         }

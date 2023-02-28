@@ -21,7 +21,6 @@ namespace Optimizely.CMS.Labs.LiquidTemplating.ViewEngine
     {
         public static IMvcBuilder AddCmsFluid(this IMvcBuilder builder, IWebHostEnvironment environment, Action<CmsFluidOptions> setupAction = null)
         {
-            
             if (builder == null)
             {
                 throw new ArgumentException(nameof(builder));

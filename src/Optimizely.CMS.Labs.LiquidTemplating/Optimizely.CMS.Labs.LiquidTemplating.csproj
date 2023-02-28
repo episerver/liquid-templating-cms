@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0;net6.0</TargetFrameworks>
+    <TargetFrameworks>net6.0;</TargetFrameworks>
     <Description>Enable Liquid as a scripting / templating language within CMS 12.</Description>
     <Copyright>(c) Optimizely</Copyright>
     <Authors>Optimizely</Authors>
-    <Version>0.5.0</Version>
+    <Version>0.6.0</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/episerver/liquid-templating</RepositoryUrl>
     <PackageTags>Optimizely;Episerver;Fluid;Liquid</PackageTags>
@@ -49,10 +49,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="EPiServer.CMS.AspNetCore.HtmlHelpers" Version="12.1.0" />
-    <PackageReference Include="EPiServer.CMS.AspNetCore.Templating" Version="12.1.0" />
-    <PackageReference Include="EPiServer.CMS.Core" Version="12.1.0" />
-    <PackageReference Include="EPiServer.CMS.UI.Core" Version="12.1.0" />
+    <PackageReference Include="EPiServer.CMS.AspNetCore.HtmlHelpers" Version="12.12.1" />
+    <PackageReference Include="EPiServer.CMS.AspNetCore.Templating" Version="12.12.1" />
+    <PackageReference Include="EPiServer.CMS.Core" Version="12.12.1" />
+    <PackageReference Include="EPiServer.CMS.UI.Core" Version="12.17.0" />
     <PackageReference Include="Fluid.Core" Version="2.2.15" />
     <PackageReference Include="Fluid.MvcViewEngine" Version="2.2.15" />
     <PackageReference Include="Fluid.ViewEngine" Version="2.2.15" />

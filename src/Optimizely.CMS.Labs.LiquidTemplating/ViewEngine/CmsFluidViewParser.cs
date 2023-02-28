@@ -38,7 +38,7 @@ namespace Optimizely.CMS.Labs.LiquidTemplating.ViewEngine
 
             RegisterIdentifierTag("RequiredClientResources", (i, w, e, c) =>
             {
-                w.Write(ClientResources.RenderRequiredResources(i.ToString()));
+                w.Write(ClientResources.RenderAllRequiredResources(i.ToString()));
                 return Statement.Normal();
             });
 

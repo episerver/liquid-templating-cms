@@ -84,12 +84,12 @@ namespace Optimizely.CMS.Labs.LiquidTemplating.Values
 
                 if (customTag != null)
                 {
-                    htmlHelper.ViewContext.ViewData[RenderSettings.CustomTag] = customTag;
+                    htmlHelper.ViewContext.ViewData[RenderSettings.CustomTagName] = customTag;
                 }
                 else
                 {
                     // Unset it, in case it's been set on the context previously
-                    htmlHelper.ViewContext.ViewData[RenderSettings.CustomTag] = null;
+                    htmlHelper.ViewContext.ViewData[RenderSettings.CustomTagName] = null;
                 }
 
                 // If there's additional viewData add it as a flag. Useful for display logic

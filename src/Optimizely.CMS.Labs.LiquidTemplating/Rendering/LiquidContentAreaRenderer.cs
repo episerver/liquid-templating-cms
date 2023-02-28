@@ -109,19 +109,6 @@ namespace Optimizely.CMS.Labs.LiquidTemplating.Rendering
         }
 
         /// <summary>
-        /// Render a <see cref="ContentAreaItem"/>. Exposed as Public as required by Fluid layer
-        /// </summary>
-        /// <param name="htmlHelper"></param>
-        /// <param name="contentAreaItem"></param>
-        /// <param name="templateTag"></param>
-        /// <param name="htmlTag"></param>
-        /// <param name="cssClass"></param>
-        public void RenderItem(IHtmlHelper htmlHelper, ContentAreaItem contentAreaItem, string templateTag, string htmlTag, string cssClass)
-        {
-            RenderContentAreaItem(htmlHelper, contentAreaItem, templateTag, htmlTag, cssClass);
-        }
-
-        /// <summary>
         /// Render a <see cref="ContentAreaItem"/>.
         /// </summary>
         /// <param name="htmlHelper">The html helper</param>
@@ -133,7 +120,7 @@ namespace Optimizely.CMS.Labs.LiquidTemplating.Rendering
         {
             var renderSettings = new Dictionary<string, object>
             {
-                [RenderSettings.ChildrenCustomTag] = htmlTag,
+                [RenderSettings.ChildrenCustomTagName] = htmlTag,
                 [RenderSettings.ChildrenCssClass] = cssClass,
                 [RenderSettings.Tag] = templateTag
             };
@@ -147,7 +134,7 @@ namespace Optimizely.CMS.Labs.LiquidTemplating.Rendering
             // Store the render settings in the view bag.
             htmlHelper.ViewBag.RenderSettings = renderSettings;
 
-            var content = _contentAreaLoader.Get(contentAreaItem);
+            var content = _contentAreaLoader.LoadContent(contentAreaItem);
 
             if (content == null)
             {
@@ -171,7 +158,7 @@ namespace Optimizely.CMS.Labs.LiquidTemplating.Rendering
             }
 
             // Resolve the template for the content fragment based on the given template tag.
-            var templateModel = ResolveTemplate(htmlHelper, content, tags);
+            var templateModel = ResolveContentTemplate(htmlHelper, content, tags);
             // If there is no template and not in edit mode then don't render.
             if (templateModel == null && !IsInEditMode())
             {
