@@ -6,6 +6,7 @@ using Microsoft.Extensions.Primitives;
 using Optimizely.CMS.Labs.LiquidTemplating.Content;
 using System;
 using System.Diagnostics;
+using System.Linq;
 
 namespace Optimizely.CMS.Labs.LiquidTemplating.FileProviders
 {
@@ -16,11 +17,14 @@ namespace Optimizely.CMS.Labs.LiquidTemplating.FileProviders
     {
         private IContentEvents _events;
         private Event _liquidEvent;
+        private IContentLoader _contentLoader;
 
         public ContentRepositoryChangeToken()
         {
+            _contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
             _events = ServiceLocator.Current.GetInstance<IContentEvents>();
             _events.PublishedContent += Events_PublishedContent;
+            _events.MovedContent += Events_MovedContent;
 
             var eventsRegistry = ServiceLocator.Current.GetInstance<IEventRegistry>();
             _liquidEvent = eventsRegistry.Get(new Guid(Constants.EventGuid));
@@ -53,7 +57,20 @@ namespace Optimizely.CMS.Labs.LiquidTemplating.FileProviders
 
         private void Events_PublishedContent(object sender, ContentEventArgs e)
         {
-            if (e.Content is LiquidTemplateData)
+            var liquidRoot = _contentLoader.GetAncestors(e.ContentLink).Where(c => c.ContentGuid.ToString() == Constants.RootGuid);
+            
+            if (e.Content is LiquidTemplateData || liquidRoot != null)
+            {
+                //Raise CMS event to ensure change is processed on all servers
+                _liquidEvent.Raise(new Guid(Constants.RaiserGuid), e.Content.ContentLink.ID);
+            }
+        }
+
+        private void Events_MovedContent(object sender, ContentEventArgs e)
+        {
+            var liquidRoot = _contentLoader.GetAncestors(e.ContentLink).Where(c => c.ContentGuid.ToString() == Constants.RootGuid);
+
+            if (e.Content is LiquidTemplateData || liquidRoot != null)
             {
                 //Raise CMS event to ensure change is processed on all servers
                 _liquidEvent.Raise(new Guid(Constants.RaiserGuid), e.Content.ContentLink.ID);
