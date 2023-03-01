@@ -28,7 +28,7 @@ namespace Optimizely.CMS.Labs.LiquidTemplating.CLI.Processors
             Console.WriteLine($"Read {remoteItems.Count()} items from Remote | {localItems.Count()} items from Local ");
             Console.WriteLine("--");
             //Calculate operations needed
-            var calculator = new TemplateSyncCalculator(remoteItems, localItems);
+            var calculator = new TemplateSyncCalculator(localItems, remoteItems);
 
             //Process creation operations
             var itemsToCreate = calculator.ToCreate();
