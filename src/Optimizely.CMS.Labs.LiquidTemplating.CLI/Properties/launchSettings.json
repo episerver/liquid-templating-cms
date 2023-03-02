@@ -1,7 +1,8 @@
 {
   "profiles": {
     "liquid-templating-cli": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "commandLineArgs": "Push https://localhost:5000 cli cli ..\\..\\..\\..\\..\\examples\\liquid-views"
     }
   }
 }
